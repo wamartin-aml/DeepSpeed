@@ -146,6 +146,9 @@ class DeepSpeedEngine(Module):
 
         self._set_distributed_vars()
 
+        import mlflow
+        mlflow.tbx_autolog.autolog()
+        
         if self.tensorboard_enabled() and self.global_rank == 0:
             self.summary_writer = self.get_summary_writer()
 
